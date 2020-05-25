@@ -22,11 +22,6 @@ import json
 
 
 app = Flask(__name__)
-# cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
-app.config.from_object(__name__)
-# enable CORS
-CORS(app, resources={r'/*': {'origins': 'http://localhost:3000'}})
 
 model = pickle.load(open('Minor_project_ml_model.pickle', 'rb'))
 
@@ -61,13 +56,11 @@ api = Api(app,
 
 # home route
 @app.route("/")
-@cross_origin(allow_headers=['Content-Type'])
 def home():
     return 'Home page'
 
 # serving form web page
 @app.route( '/get_sentiment', methods=['POST'] )
-@cross_origin(allow_headers=['Content-Type'])
 def analyse_text():
     data = request.data.decode('UTF-8')
     #data = request.data
