@@ -74,15 +74,15 @@ def analyse_text():
 
     prediction = model.classify(dict([token, True] for token in q))
 
-    response = make_response()
+    # response = make_response()
     '''
     response.headers.add( "Access-Control-Allow-Origin", "*")
     response.headers.add( 'Access-Control-Allow-Headers', "*" )
     response.headers.add( 'Access-Control-Allow-Methods', "*" )
     '''
-    response.data(prediction)
+    # response.data(prediction)
     print(prediction)
-    return response
+    return prediction, 200
 
 
 if __name__ == "__main__":
